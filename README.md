@@ -1,13 +1,13 @@
 # Product Design TIL
 
 ## 11/02/2026
-### Figma Auto Layout & GUI vs. Product Designer 정리
+### Figma Auto Layout & GUI vs. Product Designer
 
 #### 1. Figma Auto Layout 기본
 
 ##### 간격(Spacing)
-- 모든 간격값은 **4의 배수**로 설정 (4, 8, 12, 16, 20, 24 …)
-- 일관된 리듬을 만들고 개발 핸드오프 시 수치가 깔끔해짐
+- 모든 간격값은 **4의 배수**로 설정 (4, 8, 12, 16 …)
+- 일관된 리듬 // 개발 핸드오프 시 수치가 깔끔해짐
 
 ##### Wrapping 옵션
 - Auto Layout의 **Wrap** 옵션을 켜면 가로 공간이 부족할 때 자식 요소가 다음 줄로 넘어감
@@ -16,17 +16,17 @@
 ##### Overflow (스크롤)
 - 방향: **Horizontal** / **Vertical**
 - 작동 조건: **부모 프레임이 자식(콘텐츠)보다 작아야 함**
-  - 부모 프레임 ≥ 자식 프레임 → 넘칠 내용이 없으므로 스크롤이 작동하지 않음
+  - 부모 프레임 ≥ 자식 프레임 → 넘칠 내용이 없어서 스크롤 작동 X
   - 부모 프레임 < 자식 프레임 → 넘친 영역이 스크롤됨
 
 ##### Ignore Auto Layout (Absolute Position)
 - 자식 요소 **위에 겹쳐 올리는 요소**(배지, 플로팅 버튼 등)는 해당 요소에 **Ignore auto layout** 적용
-- Auto Layout 흐름에서 빠져 자유롭게 위치 지정 가능
-- 화면 상단·하단에 고정해야 한다면 Ignore 후 **Top / Bottom constraints** 설정
+- Auto Layout에서 빠져 자유롭게 위치 지정 가능
+- 화면 상단/하단에 고정해야 한다면 Ignore 후 **Top / Bottom constraints** 설정
 
 ##### Fill Container로 하단 고정
-- `content` 프레임의 높이(H)를 **Fill container**로 설정
-- → content가 남는 높이를 모두 차지하므로 `tab-bar`가 자동으로 맨 아래로 밀려남
+- `content` 프레임의 **높이(H)**를 **Fill container**로 설정
+- `content`가 남는 높이를 모두 차지하므로 `tab-bar`가 자동으로 맨 아래로 밀려남
 
 ---
 
@@ -39,7 +39,7 @@ home
 │   ├── section/greeting
 │   ├── section/search
 │   └── section/section-title
-├── tab-bar                (options)
+├── tab-bar                (options/navigations)
 └── indicator
 ```
 
@@ -57,19 +57,19 @@ home
 | 비즈니스 연결 | 원래의 비즈니스 목표까지 거슬러 연결할 필요는 적음 | 회사가 달성하려는 목표와 직접 연결해야 함 |
 | 협업 범위 | 주로 디자인 영역 | PM, SWE, DA, DS 등 전 직군과 협업 |
 
-##### Product Designer의 업무 프로세스
-1. **문제 정의 (반복)**
+##### Product Designer의 업무 프로세스 (PDVC Iteration)
+1. **문제 정의 (Problem Definition)**
    - 가설 수립 → 실제 사용자 인터뷰로 검증 → 문제 정의 수정
    - 일상에서 사람들이 겪지만 흔히 간과되는 문제를 발견하는 것이 핵심
-2. **디자인**
+2. **디자인 (Design)**
 3. **검증 (Validation)**
    - 사용성 테스트(Usability testing) 등
 4. **협업 (Collaboration)**
    - PM, SWE, DA, DS 등과 함께 진행
 
 ##### 필요 역량
-- **Business acumen**: 비즈니스가 어떻게 돌아가는지, 회사가 무엇을 달성하려는지에 대한 감각
-- 사용자의 일상 속 니즈를 파악하는 관찰력
+- **Business Acumen**: 비즈니스가 어떻게 돌아가는지, 회사가 무엇을 달성하려는지에 대한 감각
+- 사용자의 일상 속 Needs/Pain Points를 파악하는 관찰력
 - 가설 검증을 비즈니스 임팩트 관점에서 판단하는 능력
 
 ##### 예시: 토스's 조직 구조
