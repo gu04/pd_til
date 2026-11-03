@@ -1,59 +1,6 @@
 # Product Design TIL
 
 ## 11/03/2026
-###
-Constraints 발동 조건: Parent가 frame 이어야 됨
-Fiil 발동 조건: Parent가 Autolayout 이어야 됨
-State: 사용자의 다음 액션을 알게 함 -- atomic colour 계열 내에서 명도/brightnes만 바꿈
-* Default
-* Hover (모바일 적용 X)
-* Pressed
-* Focus (Tab 눌렀을 때 선택됨 -- outlined button)
-* Disabled (누를 수 X)
-Mental Model (멘탈모델): interface와 상호작용할 때 거치는 생각 (사용하는 방법)
-Button Hierarchy (버튼 위계)
-* Primary
-* Secondary
-* Tertiary
-* Assistive
-* Destructive (위험 요소 e.g., 예약 취소, 탈퇴)
-Button Style
-* Solid (Filled, Contained)
-* Outlined
-* Text (Ghost)
-Button Colour (버튼 fill은 opacity 바꾸지 X, 대신 그냥 배경에 텍스트 올릴 때는 opacity altering 하는 경우 다수)
-Button Size (height값을 fixed두기 OR 버튼 글자 크기 조정)
-* S
-* M
-* L
-
-Badge: 아이콘/카드 옆에 있는 작은 표시/숫자/상태/새 소식을 한눈에
-* 숫자 (count (e.g., 누적 알림 개수))
-* 라벨 (급한 상황: RED, 정보/나머지: BLUE, 주의: YELLOW, 성공: GREEN, etc.)
-* 점 (e.g., 알림이 있을 때/새 소식이 있을 때)
-Child 입장에서 Hug/Fill/Fixed:
-* Hug: 자신에 Parent가 맞춤 (금쪽이를 품어줌)
-* Fill: 자신이 Parent에 맞춤 (Parent 항상 autolayout on)
-* Fixed: 자신의 사이즈는 Parent, 자기자신에 상관 X
-
-Input field states
-* Empty (Blurred) -- placeholder (gray text as example) + helper-text (instructions on what to input)
-* Focus -- stroke/border & icon blue (cursor bar) + value/input text + helper-text (instructions on what to input)
-* Filled -- placeholder와는 다르게 진한 text colour that the user filled in + helper-text (instructions on what to input)
-* Error -- stroke/border red + error text (정확히 어떤 error 인지/error message의 중요성) + ! 사인 (주의 심볼) + helper-text (instructions on what to input)
-* Disabled -- 입력 불가 상태 (all gray as example) + helper-text (instructions on what to input)
-
-Input uses
-* 아이디
-* 비밀번호 (show password toggle 옵션도 있음)
-* 검색 (검색어 모두 지우기 X 옵션 있음)
-
-버튼 반경 원래는 40px 기준으로 디자인 되어야 되는데 다른 요소들에 둘러쌓여서 쉽게 사이즈를 크게 바꾸지 못 하는 경우 -> ignore auto layout 후 터치 반경만 높이기
-
-
-# Figma & UI Design Notes
-
-## 11/03/2026
 
 ### 1. Figma Layout & Constraints
 
