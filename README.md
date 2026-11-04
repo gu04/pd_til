@@ -1,5 +1,184 @@
 # Product Design TIL
 
+## 11/04/2026
+
+### 1. Responsive Layout (반응형 레이아웃)
+
+#### 1.1 Fill Container & Auto Layout
+
+Parent Frame 크기에 따라 Child Frame도 함께 늘어나도록 설정하는 방법
+
+- **Width: Fill** → Parent의 너비 변화에 맞춰 좌우로 늘어남.
+- **Height: Fill** → Parent의 높이 변화에 맞춰 위아래로 늘어남.
+- **Fill Container 조건:** Child의 직속 Parent에 Auto Layout(AL)이 적용되어 있어야 함.
+- 중첩된 Child까지 반응형으로 만들려면 각 단계의 Parent에 AL을 적용하고, 필요한 Child도 AL로 두어 Width/Height를 Fill로 설정.
+
+#### 1.2 Auto Layout vs. Constraints
+
+| 구분 | Auto Layout (AL) | Constraints |
+|---|---|---|
+| **용도** | 콘텐츠 배치 및 크기 자동 조정 | Parent 크기 변화에 따른 위치·크기 유지 |
+| **주요 설정** | Fill, Hug, Gap, Auto Spacing | Left, Right, Top, Bottom, Scale |
+| **적용 예시** | 카드, 버튼 그룹, 콘텐츠 영역 | Status Bar, Indicator, Navigation Bar 등 고정 배치 요소 |
+
+**핵심 원칙**
+- **위치가 고정**되어야 하는 요소: 필요에 따라 AL 대신 Constraints 사용.
+- **고정은 아니지만 유동적인** 콘텐츠: AL + Child Fill + Auto Spacing 사용
+- **좌우 여백**을 유지하며 늘어나는 요소: Constraints → `Left + Right` (w/o AL)
+- **위아래 여백**을 유지하며 늘어나는 요소: Constraints → `Top + Bottom` (w/o AL)
+
+---
+
+### 2. Navigation & Tab Bar
+
+#### 2.1 Top Bar (상단 탑바)
+
+**주요 유형**
+1. **Home Header:** 홈 화면 상단 헤더.
+2. **Back Navigation Bar:** 상세 페이지 등에서 이전 화면으로 돌아가는 탑바.
+3. **Search Top Bar:** 검색 기능 중심의 탑바.
+
+##### Back Navigation Bar 구조
+
+| 영역 | 역할 | 예시 |
+|---|---|---|
+| **Leading** | 왼쪽 버튼 영역 | 뒤로가기 |
+| **Title** | 현재 페이지 제목 | 상품 상세 |
+| **Trailing** | 오른쪽 버튼 영역 | 좋아요, 장바구니, 더보기 |
+
+- Leading / Trailing 버튼은 **Icon + Auto Layout**으로 터치 영역(Touch Target)을 설정.
+- 버튼 내부와 버튼 그룹에 각각 AL을 적용하는 중첩 구조(AL × 2) 활용 가능. (항상 Icon위에 AL을 씌워야 Touch target 조정 가능한 Button 생성 가능)
+
+##### Hierarchy Back vs. History Back
+
+- **Hierarchy Back:** 상위 → 하위로 이동한 화면 계층을 역순으로 돌아감.
+- **History Back:** 실제 방문한 페이지 기록을 역순으로 돌아감.
+
+**UX Tip:** History Back은 방문 경로가 길어질 수 있으므로, Home으로 바로 이동하는 옵션을 추가하면 편리함.
+
+#### 2.2 Bottom Tab Bar (하단 탭바)
+
+앱의 주요 화면 사이를 이동하는 내비게이션.
+
+##### Selection State (선택 상태)
+
+| 방식 | 특징 |
+|---|---|
+| 상태 구분 없음 | 모든 탭이 회색 → 현재 위치 파악 어려움 |
+| 색상만 변경 | 색각 이상 사용자에게 접근성이 낮을 수 있음 |
+| **색 + Bold Text + Filled Icon** | 여러 시각적 단서로 선택 상태를 명확하게 전달 (권장) |
+
+- 선택된 아이콘을 채울 때는 아이콘 내부의 **Fill × Fill (Width × Height)** 설정 확인 (버튼 사이 갭 없이 상하좌우 다 Fill the bar)
+- **탭 간 Gap:** `0`으로 설정해 터치 영역이 서로 인접하도록 구성.
+- **Touch Target:** 수업 기준 40~44px 정도 확보.
+- **탭 개수:** 일반적으로 3~5개 권장.
+
+##### Hick's Law (힉의 법칙)
+: 선택지가 많아질수록 사용자의 의사결정 시간이 로그 함수적으로 증가하는 경향이 있음
+(User's **decision-making time increases logarithmically with the number of choices** provided)
+
+- 하단 탭 개수를 제한해 탐색 부담을 줄임.
+- 탭이 너무 많으면 정보 구조를 재정리하는 것이 좋음.
+
+#### 2.3 Segment Tab (세그먼트 탭)
+: **한 화면** 내에서 콘텐츠의 카테고리나 표시 영역을 전환하는 탭
+
+- Bottom Tab과 달리 앱의 최상위 화면 이동보다는 **현재 화면 내** 콘텐츠 전환에 사용.
+- 선택한 항목 아래에 Underline Indicator 표시.
+- Indicator는 별도 선보다 **Bottom Stroke**로 구현하는 방법 권장.
+  - Dev Mode에서 Border 속성을 확인하기 쉬움.
+
+---
+
+### 3. Card Component (카드)
+
+#### 3.1 Card Types
+
+| 유형 | 구조 |
+|---|---|
+| **Stacked Card / Vertical Card** | 이미지와 정보를 세로로 배치 |
+| **Card / Normal** | 일반적인 카드 레이아웃 |
+| **Card / List** | 이미지와 정보를 가로로 배치 |
+
+#### 3.2 Card Anatomy (카드 구성 요소)
+
+카드에 포함될 수 있는 요소들 (Optional):
+
+1. **Thumbnail (썸네일)**
+   - 대표 이미지 또는 배경 이미지
+   - Chip / Badge 등 추가 정보 표시 가능
+
+2. **Information (정보)**
+   - 제목
+   - 메타데이터 (날짜, 위치 등)
+   - 가격
+   - 남은 자리 / 재고
+
+3. **CTA (Call-to-Action)**
+   - 사용자에게 다음 행동을 유도하는 버튼 또는 선택지 (e.g., 예약하기, 자세히 보기)
+
+#### 3.3 Lock Aspect Ratio (이미지 비율 고정)
+
+- 카드 크기가 변해도 이미지의 가로·세로 비율을 유지하는 기능.
+- Figma의 크기 설정에서 **Lock Aspect Ratio** 활용.
+- 반응형 카드에서 이미지/썸네일이 찌그러지지 않도록 설정.
+
+#### 3.4 Truncate Text (긴 제목 처리)
+: 긴 제목이 카드 레이아웃을 깨뜨리지 않도록 제한
+
+**권장 설정**
+- 제목 최대 **2줄** 표시.
+- 초과하는 텍스트는 `...`으로 생략.
+- Typography 설정에서:
+  1. `Truncate Text` 활성화.
+  2. `Max Lines = 2` 설정.
+  3. 텍스트 Width → `Fill Container`.
+
+**중요:** Truncate가 정상적으로 작동하려면 텍스트 영역의 너비가 제한되어야 함. AL 내부의 반응형 카드에서는 **Width: Fill**로 설정.
+
+---
+
+### 4. Calendar Component (캘린더)
+
+#### 4.1 Calendar Layout
+
+**7열 그리드(7-Column Grid)** 구조로 구성.
+
+1. 날짜 셀 한 개 당 **34x34 AL** 1차 씌우고 하단에 **dot 4x4** AL (세로) → AL 전체 **44x48 Fixed**
+2. 날짜 셀 7개 Duplicate + 가로로 AL 배치 → **Week Frame** 생성.
+3. Week Frame들을 세로로 쌓아 → **Month Frame** 생성.
+4. 각 날짜 셀의 Width → `Fill Container`.
+5. 각 Week / Month Frame에 필요한 AL 적용.
+
+#### 4.2 Date Cell States (날짜 셀 상태)
+
+| State | 시각적 표현 | 의미 |
+|---|---|---|
+| **Default** | 기본 텍스트 | 일반 날짜 |
+| **Today** | Outline / Border | 오늘 날짜 |
+| **Selected** | Filled Background | 사용자가 선택한 날짜 |
+| **Disabled** | Gray Text | 선택할 수 없는 지난 날짜 |
+| **Available** | 숫자 아래 Dot | 예약 또는 선택 가능한 날짜 |
+
+**UX 원칙**
+- 날짜별 상태가 시각적으로 명확하게 구분되어야 함.
+- Today와 Selected는 서로 다른 스타일로 구분.
+- Disabled 날짜는 선택 불가능하다는 사실을 명확히 전달.
+- Dot Indicator를 활용해 선택 가능한 날짜를 빠르게 파악하도록 설계.
+
+---
+
+### 5. Key Takeaways
+
+- **Responsive Layout:** Child의 AL Width/Height Fill (w/ auto spacing) + 직속 Parent의 AL
+- **Auto Layout:** 유동적인 콘텐츠 배치와 크기 조정에 활용
+- **Constraints:** Parent 크기 변화에도 특정 위치·여백을 유지해야 하는 요소에 활용 (e.g., status_bar, indicator, tab-bar)
+- **Top Bar:** Leading / Title / Trailing 구조와 Back Navigation 방식 구분
+- **Bottom Tab Bar:** 3~5개 탭, 충분한 Touch Target, 명확한 Selection State
+- **Segment Tab:** 동일 화면 내 콘텐츠 전환 + Underline Indicator.
+- **Card:** Thumbnail + Information + CTA, 이미지 비율 고정 및 텍스트 Truncate.
+- **Calendar:** 7열 Grid + Fill Container + 날짜별 시각적 State.
+
 ## 11/03/2026
 
 ### 1. Figma Layout & Constraints
@@ -20,6 +199,8 @@ Child Frame 기준으로 이해하기:
 - **Fixed:** Parent나 내부 콘텐츠 크기에 관계없이 지정된 크기를 유지함.
 
 **Note:** Hug은 콘텐츠에 맞춰 자신의 크기를 조정하는 설정이며, Fill은 부모 Auto Layout의 사용 가능한 공간을 채우는 설정이다.
+
+
 
 #### 1.3 Auto Layout & Position
 
