@@ -1,4 +1,231 @@
-# Product Design TIL
+# Product Design TIL (디자인은 정답이 정해져있지 않으며 판단능력이 중요하다!)
+
+## 11/05/2026
+
+### 1. Component & Instance
+
+#### 1.1 Component의 개념
+
+**Component:** 여러 화면에서 반복적으로 사용하는 UI 요소를 재사용 가능한 형태로 만든 것.
+
+- **Main Component (마름모 4개):** 원본 컴포넌트
+- **Instance (마름모 1개):** Main Component에서 생성된 복사본
+- **Override:** Instance에서 원본과 다르게 수정한 속성
+
+**Component = Template / Instance = Template의 복사본**
+
+**Component가 필요한 이유**
+- 소프트웨어 규모가 커지면서 동일한 UI를 여러 페이지에서 반복적으로 사용.
+- Main Component 하나를 수정하면 연결된 모든 Instance에 변경 사항이 반영됨.
+- **일관성 유지, 작업 효율성 증대, 장기적인 유지보수 용이.**
+
+**Figma 사용법**
+- **Create Component:** `⌘ + ⌥ + K`
+- **Main Component 찾기:** Instance 우클릭 → `Go to Main Component`
+  - 또는 우측 패널(RHS)의 `From this file`에서 원본 탐색.
+- **Component 이름 변경:** Layers에서 선택 → `⌘ + R`
+
+#### 1.2 Component 안에 Component 사용 (Nested Component)
+
+Component 내부에 다른 Component의 **Instance**를 포함할 수 있음.
+
+**예시:**
+- `Icon/Heart`를 Main Component로 생성.
+- Heart Icon의 Instance를 Button Component 내부에 배치.
+- Button Component의 Instance에서 Heart Icon을 Star Icon으로 교체 가능.
+
+**<Key Point>** 반복 사용되는 Icon 등을 독립적인 Component로 만들면, 상위 Component에서도 재사용 및 교체가 쉬워짐.
+
+---
+
+### 2. Component 수정 및 관리
+
+#### 2.1 Instance에서 수정 가능한 요소
+
+- Text, Colour, Icon 등 일부 속성 변경 가능.
+- Nested Instance 교체 가능 (e.g., `Icon/Heart` → `Icon/Star`).
+- Main Component와 연결된 상태를 유지하면서 개별 스타일 수정 가능.
+
+**주의: Instance에서 직접 변경이 제한되는 요소**
+1. 레이어 순서 및 구조적 위치
+2. Constraints
+
+> 구조 자체를 변경하려면 Main Component를 수정하거나 Instance를 Detach해야 할 수 있음.
+
+#### 2.2 Override
+
+**Override:** Instance에서 수정한 속성을 Main Component와 별도로 유지하는 기능.
+
+**예시:**
+1. Main Component의 색상 = Blue.
+2. Instance 1의 색상을 Red로 변경 → Override 발생.
+3. Main Component의 색상을 Green으로 변경.
+4. Instance 1은 **Red 유지**, Override하지 않은 다른 Instance는 Green으로 변경.
+
+> **핵심:** Main Component를 수정해도 Instance에서 Override한 속성은 유지됨.
+
+#### 2.3 Reset Instance
+
+Override된 Instance를 **현재 Main Component 상태로 초기화**하는 기능.
+
+**사용법**
+1. Instance 선택.
+2. 우측 패널(RHS)의 `...` 클릭.
+3. `Reset Instance` 선택.
+
+- Instance에 적용된 Override를 제거.
+- 현재 Main Component의 속성을 다시 반영.
+
+#### 2.4 Detach Instance
+
+Instance와 Main Component의 **연결을 해제**하는 기능.
+
+- Main Component를 수정해도 더 이상 변경 사항이 반영되지 않음.
+- 일반 Frame처럼 독립적으로 편집 가능.
+
+**사용법**
+- 단축키: `⌥ + ⌘ + B`
+- 또는 Instance 우클릭 → `Detach Instance`
+
+> **Reset vs. Detach**
+> - **Reset:** 연결 유지 + Override 초기화
+> - **Detach:** Main Component와의 연결 해제
+
+---
+
+### 3. Variant & Component Properties
+
+#### 3.1 Variant의 개념
+
+**Variant:** 하나의 Component를 여러 속성(Property)에 따라 변형한 디자인을 하나의 Component Set으로 묶은 것.
+
+- 동일한 UI 요소의 Type, State 등을 체계적으로 관리.
+- Instance마다 스타일을 수동으로 Override하지 않고, Property 값만 변경해 원하는 디자인 선택 가능.
+
+**예시: Button Component**
+
+| Property | Values |
+|---|---|
+| **Type** | Primary, Secondary |
+| **State** | Default, Pressed, Disabled |
+
+→ `2 Types × 3 States = 6 Variants`
+
+#### 3.2 Component Set 만들기
+
+여러 Main Component를 하나의 Variant Set으로 묶는 방법.
+
+**사용법**
+1. 각각의 UI 디자인을 **Main Component**로 생성.
+2. Variant로 묶을 Main Components를 모두 선택.
+3. 우측 패널 → `Combine as Variants`.
+4. Component Set 생성 후 Property 및 Value 설정.
+
+**주의사항**
+- Variant로 묶을 요소는 **각각 Main Component**여야 함.
+- Main Components를 일반 Group으로 묶으면 `Combine as Variants` 옵션이 나타나지 않을 수 있음.
+- Group이 아니라 개별 Main Components를 직접 다중 선택해야 함.
+
+#### 3.3 Variant Properties 설정
+
+**방법 1: 자동 생성**
+
+- Combine하기 전에 각 Main Component의 이름을 Property별로 지정.
+- Figma가 이름을 바탕으로 Variant Properties를 자동 인식.
+
+**Naming Convention**
+`Property1=Value1, Property2=Value2`
+
+**예시:**
+- `Type=Primary, State=Default`
+- `Type=Primary, State=Pressed`
+- `Type=Primary, State=Disabled`
+- `Type=Secondary, State=Default`
+- `Type=Secondary, State=Pressed`
+- `Type=Secondary, State=Disabled`
+
+**방법 2: 수동 설정**
+
+1. Component Set 선택.
+2. Variant Property 추가.
+3. Property 이름 지정 (e.g., Type, State).
+4. 각 Variant의 Property Value를 직접 입력.
+
+#### 3.4 Boolean Property (True / False)
+
+Property 값이 `True / False`인 경우, Instance에서 **Toggle 형태**로 제어 가능.
+
+**예시:**
+- `Show Icon = True / False`
+- `Selected = True / False`
+
+> Boolean은 On/Off처럼 두 가지 상태를 제어할 때 유용함. Variant의 Boolean 값 또는 Component의 Boolean Property로 구현 가능.
+
+#### 3.5 Variant 사용의 장점
+
+- Instance마다 색상, 상태 등을 일일이 Override할 필요 없음.
+- 자주 사용하는 Component의 스타일을 Property 선택만으로 변경.
+- Component 디자인의 일관성 유지.
+- 새로운 State나 Type 추가 및 유지보수가 쉬움.
+
+---
+
+### 4. Design System 구축
+
+#### 4.1 선 구축 vs. 후 구축
+
+| 방식 | 특징 | 적합한 상황 |
+|---|---|---|
+| **선 구축** | 디자인 시스템을 먼저 정의한 후 화면 디자인 | 일관성 유지, 효율성 증대, 장기적 유지보수 |
+| **후 구축** | 실제 화면을 먼저 디자인하면서 컴포넌트와 스타일 정리 | 초기 요구사항이 불확실하거나 빠른 프로토타이핑이 필요한 경우 |
+
+**선 구축**
+- 공통 규칙을 먼저 정의하므로 일관성 확보가 쉬움.
+- 규모가 큰 프로젝트에서 장기적인 효율성 증대.
+
+**후 구축**
+- 초기 단계에서 요구사항이 불확실할 때 유리.
+- 실제 화면을 디자인하면서 반복되는 패턴을 발견하고 Component화.
+- 빠른 프로토타입 제작에 적합.
+
+#### 4.2 Design System 구축 프로세스
+
+1. **디자인 원칙 정의 (Design Principles)**
+   - 프로젝트 목표 및 브랜드 가치 고려.
+   - 회사와 제품에 맞는 Design System 방향 설정.
+
+2. **제품 검토 (Auditing)**
+   - 기존 UI 분석.
+   - 반복되는 Component와 Design Pattern 파악.
+
+3. **스타일 가이드 개발 (Style Guide)**
+   - Typography, Colour, Icon, Spacing 등 정의.
+
+4. **컴포넌트 디자인 및 문서화 (Component Documentation)**
+   - 공통 UI Component 제작.
+   - 사용 방법, 상태, 세부 규칙 문서화.
+
+5. **디자인 시스템 구현 (Implementation)**
+   - 개발자가 Component 및 Style을 코드로 구현.
+
+6. **지속적인 유지보수 (Maintenance)**
+   - 기존 Component 개선.
+   - 사용자 피드백 반영 및 지속적인 업데이트.
+
+---
+
+### 5. Key Takeaways
+
+- **Main Component:** 재사용 가능한 UI 원본. 수정 시 연결된 Instance에 변경 사항 반영.
+- **Instance:** Main Component와 연결된 복사본.
+- **Override:** Instance에서 개별적으로 변경한 속성 유지.
+- **Reset Instance:** Override 초기화 + Main Component 연결 유지.
+- **Detach Instance:** Main Component와의 연결 해제.
+- **Nested Component:** Component 내부에 다른 Component의 Instance 포함.
+- **Variant:** Type, State 등 Property에 따라 여러 Component 디자인을 하나의 Set으로 관리.
+- **Component Set:** 개별 Main Components를 `Combine as Variants`로 묶어 생성.
+- **Boolean Property:** True/False 값을 Toggle로 제어.
+- **Design System:** 디자인 원칙 → 제품 검토 → 스타일 가이드 → 컴포넌트 문서화 → 구현 → 유지보수.
 
 ## 11/04/2026
 
