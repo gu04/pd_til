@@ -18,7 +18,7 @@ e.g., icon/heart -> icon/check
 --> 한 Instance 당 Override 하기가 더 편리해짐
 
 ### Setting Properties 방법
-**중요:** 각 Property는 Layer마다 연결을 해야 작동 됨 (연결된 Property는 Layer Panel/Sidebar에서 보라색으로 바뀜)
+**중요:** _Variant를 제외한_ 각 Property는 Layer마다 연결을 해야 작동 됨 (연결된 Property는 Layer Panel/Sidebar에서 보라색으로 바뀜)
 
 #### 공통 시작
 1) Properties Panel에서 Property 추가
