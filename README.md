@@ -110,6 +110,7 @@ Component 내부에 다른 Component의 **Instance**를 포함할 수 있음.
 4. Instance 1은 **Red 유지**, Override하지 않은 다른 Instance는 Green으로 변경.
 
 > **핵심:** Main Component를 수정해도 Instance에서 Override한 속성은 유지됨.
+> **중요:** Instance swap (icon) 했을 때 디폴트 색상이 의도한 바와 다르다면 **기존 Main Component의 vector layer 이름이 통일**되어야 모든 tab-bar 버튼 template (e.g., variants) 색상대로 다른 아이콘들도 통일돼서 설정됨
 
 #### 2.3 Reset Instance
 
@@ -137,6 +138,8 @@ Instance와 Main Component의 **연결을 해제**하는 기능.
 > **Reset vs. Detach**
 > - **Reset:** 연결 유지 + Override 초기화
 > - **Detach:** Main Component와의 연결 해제
+
+**중요:** Main Component 자체는 Detach가 안 됨 -> Main Component를 바꾸려면 ==> 1) Instance로 만들기 -> 2) Detach -> 3) Make Main Component
 
 ---
 
@@ -214,6 +217,8 @@ Property 값이 `True / False`인 경우, Instance에서 **Toggle 형태**로 �
 - 자주 사용하는 Component의 스타일을 Property 선택만으로 변경.
 - Component 디자인의 일관성 유지.
 - 새로운 State나 Type 추가 및 유지보수가 쉬움.
+
+**중요:** Variant 수는 축마다 값 개수 곱해서 늘어남
 
 ---
 
