@@ -1,5 +1,7 @@
 # Week 3 (11/09 ~ 11/13)
 
+# 11/10/2026
+
 ## Prototype
 : 화면을 실제 앱처럼 눌러보게 만든 시안. 개발 전에 흐름을 확인하고 팀과 같은 그림을 보기 위해 만듦
 
@@ -20,7 +22,7 @@
    - On tap/On click
    - On drag
    - While hovering
-   - After delay (버튼이 아닌 *화면 프레임*에 걸기)
+   - After delay (버튼이 아닌 ***화면 프레임***에 걸기)
    - Key/Gamepad
 ### Action 종류
    - Navigate to
@@ -33,13 +35,56 @@
 ## 연결도 (플로우 흐름도, 막힌 경로, 재생
 : 화면 버튼으로 잇고, 돌아오는 길 (Back)과 자동 이동 (After delay)까지 연결
 > **TIP:** 화면/페이지마다 들어가는 길, 나가는 길 둘 다 포함해야함
-> **TIP:** 매 페이지마다 반복되는 Flow/Transition 화살표를 줄이고 싶다면 (e.g., Tab-bar) Main Component로 따로 설정 후에 반복 될 각 Transition을 Main Component에서만 정의 (화살표 잇기). Instance는 그대로 따라감. Alternatively, 각 버튼을 Main Component로 설정하고 Main Components 다 묶어서 Variant로 설정. 이후 Main Components 묶음 (Variant묶음) 각 페이지에 Instance로 붙여넣기.
+> **TIP:** 매 페이지마다 반복되는 Flow/Transition 화살표를 줄이고 싶다면 (e.g., Tab-bar) Main Component로 따로 설정한 후에 반복될 각 Transition을 Main Component에서만 정의 (화살표 잇기). Instance는 그대로 따라감. Alternatively, 각 버튼을 Main Component로 설정하고 Main Components를 다 묶어서 Variant로 설정. 이후 Main Components 묶음(Variant)을 각 페이지의 Instance로 붙여넣기.
 
 막힌 경로 (Dead end)
 : 다음 연결되는 페이지가 없거나, 백을 할 수가 없는 구조
 
 > **TIP:** Preview에서 화면 내에 누를 수 있는/상호작용 할 수 있는 요소를 한번에 확인하려면 화면 밖 영역을 클릭하면 hover상태로 누를 수 있는 버튼 표시해줌
 > **TIP:** Preview에서 ```Share Prototype``` 선택지
+
+
+## Smart Animate (Animation)
+
+### Animation 종류
+   - Instant (바로 바뀜)
+   - Dissolve (서서히 겹치며 바뀜)
+   - Move in (새 화면이 위에 덮임)
+   - Push (새 화면이 밀어냄)
+   - Smart Animate (**같은 이름 레이어**를 (웬만하면 같은 Layer 순서) 자동으로 트래킹해 움직임 (e.g., 찜 버튼/'장바구니에 추가됐어요' 팝업))
+> **Note:** Smart Animate가 제대로 안 씌워지면 Dissolve로 대신하기
+
+### Easing & Duration
+: Easing은 속도가 변하는 모양, Duration은 걸리는 시간. 앱 화면 전환은 200~300ms가 무난함.
+
+#### Easing 종류
+   - Linear (기계적)
+   - Ease out (들어오는 화면) -- 가장 많이 쓰는 Easing 종류
+   - Ease in (나가는 화면)
+   - Ease in and out (제자리 변화)
+   - Spring (스프링처럼 조금씩 튕기도록)
+
+## 바텀시트 Overlay
+: 지금 화면
+- Transition을 Open overlay로 위에 얹어질 요소에 Transition 설정
+(e.g., **toast** -- 유저가 뭘 했는지 확인해주는 UI (예: '찜 목록에 담았어요'))
+
+## Scroll (Behaviour)
+- Vertical/Horizontal/Both
+* Vertical (세로 스크롤) {e.g., 클래스 상세, 세로 체크리스트)
+> **주의:** _Parent frame에 씌워_ 줘야하는데 Parent frame의 _height_ < Child frame 내용 _height_ 여야 Vertical Overflow로 스크롤 가능
+* Horizontal (가로 스크롤) {e.g., 추천 카드 목록, 강사 사진)
+> **주의:** _Parent frame에 씌워_ 줘야하는데 Parent frame의 _width_ < Child frame 내용 _width_ 여야 Horizontal Overflow로 스크롤 가능
+* Both (양쪽 스크롤) {e.g., 지도, 큰 표}
+> **주의:** _Parent frame에 씌워_ 줘야하는데 Parent frame의 _height & width_ < Child frame의 _height & widgth_ 여야 Both Overflow로 스크롤 가능
+
+- Fixed/Sticky/Overflow
+: Overflow는 프레임이 스크롤되는 방향, Position은 그 안 요소가 움직이는 방식, 스크롤은 내용이 프레임보다 길 때만 생김
+* Fixed: 한 자리에만 고정
+> **주의:** AL 요소는 Fixed X (대신 Ignore AL 상태면 Fixed 가능해짐)
+* Sticky: Scroll과 함께 어느 한 순간 화면 모서리에 붙는 상태
+> **TIP:** 예를 들어 Top에 고정하려면 Constraints를 Top으로 두고 Sticky scroll 옵션 선택
+> **TIP:** status-bar 때문에 sticky 요소가 Top일 때 가려진다면 요소의 top padding만 status-bar height 만큼 늘리기
 
 
 # 11/09/2026
