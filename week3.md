@@ -1,5 +1,47 @@
 # Week 3 (11/09 ~ 11/13)
 
+## Prototype
+: 화면을 실제 앱처럼 눌러보게 만든 시안. 개발 전에 흐름을 확인하고 팀과 같은 그림을 보기 위해 만듦
+
+### Prototype의 목적
+1) **검증 (Validation)**: 개발 전에 흐름 눌러서 문제 찾기 (e.g., (제품을 배포하기 전에 사용자가 겪는 문제를 파악하기 위한) 사용성 테스트 (UT))
+2) **공유 (Sharing)**: PM/개발자/고객사, 모든 stakeholders가 같은 흐름을 봄
+3) **설명 (Explanation)**: 움직임과 전환을 통해 말보다 직접 보여주기
+
+## Prototype Tab & Flow
+
+## 연결의 3요소
+### Trigger/Action/Animation
+   - Trigger (언제)
+   - Action (어떤 행동을/무엇을)
+   - Animation (어떤 비주얼 방식으로/어떻게)
+   > e.g., brn/에약하기를 ```On tap 하면``` ```예약화면으로``` ```
+### Trigger 종류
+   - On tap/On click
+   - On drag
+   - While hovering
+   - After delay (버튼이 아닌 *화면 프레임*에 걸기)
+   - Key/Gamepad
+### Action 종류
+   - Navigate to
+   - Back
+   - Open overlay
+   - Scroll to
+   - Open link
+> **주의:** Back action일 경우, Historical back을 사용 (Hierarchy back을 사용하려면 ```Navigate to action```을 이용)
+
+## 연결도 (플로우 흐름도, 막힌 경로, 재생
+: 화면 버튼으로 잇고, 돌아오는 길 (Back)과 자동 이동 (After delay)까지 연결
+> **TIP:** 화면/페이지마다 들어가는 길, 나가는 길 둘 다 포함해야함
+> **TIP:** 매 페이지마다 반복되는 Flow/Transition 화살표를 줄이고 싶다면 (e.g., Tab-bar) Main Component로 따로 설정 후에 반복 될 각 Transition을 Main Component에서만 정의 (화살표 잇기). Instance는 그대로 따라감. Alternatively, 각 버튼을 Main Component로 설정하고 Main Components 다 묶어서 Variant로 설정. 이후 Main Components 묶음 (Variant묶음) 각 페이지에 Instance로 붙여넣기.
+
+막힌 경로 (Dead end)
+: 다음 연결되는 페이지가 없거나, 백을 할 수가 없는 구조
+
+> **TIP:** Preview에서 화면 내에 누를 수 있는/상호작용 할 수 있는 요소를 한번에 확인하려면 화면 밖 영역을 클릭하면 hover상태로 누를 수 있는 버튼 표시해줌
+> **TIP:** Preview에서 ```Share Prototype``` 선택지
+
+
 # 11/09/2026
 
 ## Variant 폭증
