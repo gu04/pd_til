@@ -1,4 +1,4 @@
-<img width="496" height="145" alt="image" src="https://github.com/user-attachments/assets/17970c5c-a6d6-4200-9b73-fade4ebdf93e" /># Week 4
+# Week 4
 
 # 11/17/2026
 
