@@ -40,14 +40,14 @@
 > 개발자에게 핸드오프할 때는 dev mode에서 규격이 padding, margin 등이 px로 나타날 수 있게 Auto Layout 사용
 > **TIP:** 보통 마진은 16이나 20정도 (에어비앤비는 24)
 
-# 2. 스크린 사이즈 & 브레이크포인트
-## 단위
+## 2. 스크린 사이즈 & 브레이크포인트
+### 단위
 - px(픽셀): 화면의 점. CSS px는 **기기 배율을 반영한** 논리 단위 {웹(CSS)/이미지파일}
 - pt(포인트): **기기 배율과 상관없는** 논리 단위 (포인트) {iOS}
 - dp(디피): 160dpi 화면을 기준으로 한 논리 단위 {Android}
 > **TIP:** 이미지는 픽셀을 사용하되 배율 별로(**3배수** 이상) 내보내기
 
-### 배율
+#### 배율
 : 같은 크기에서 더 많은 픽셀을 그리는 정도. 요즘 폰은 대부분 @2x 혹은 @3x 화면 (해상도 높게)
 e.g, iOS에서의 24pt 아이콘을 배율로 그린다면:
 - @1x: 24 x 24 px
@@ -55,21 +55,21 @@ e.g, iOS에서의 24pt 아이콘을 배율로 그린다면:
 - @3x: 72 x 72 px
 > 아이폰은 SVG 형식으로 씀 (벡터) -- 이미지는 Export에서 x3배수 정도의 SVG로 내보내기
 
-## 브레이크 포인트
+### 브레이크 포인트
 : 레이아웃이 바뀌는 **화면 폭** 기준. 기기 이름이 아니라 **폭(가로) 구간으로 정함**.
 <img width="496" height="145" alt="image" src="https://github.com/user-attachments/assets/67d39f0b-ba62-495a-9fb5-6e6617a99926" />
 
-## 레이아웃 변화
-### 바뀌는 패텬
+### 레이아웃 변화
+#### 바뀌는 패텬
 : 화면이 넓어질 때 자주 쓰는 4가지 변화. 하나 이상을 섞어 씀.
 <img width="695" height="236" alt="image" src="https://github.com/user-attachments/assets/04aaf981-fed3-4d2e-bec8-a6700b4f47f1" />
 
-### 한 화면, 3 크기
+#### 한 화면, 3 크기
 : 폭에 따라 바뀌는 모습
 <img width="695" height="287" alt="image" src="https://github.com/user-attachments/assets/965cf1fe-c237-4d0a-be30-b64d442081c8" />
 
-# iOS와 Android
-## 같은 기능, 다른 규칙
+## 3. iOS와 Android
+### 같은 기능, 다른 규칙
 - iOS: Apple HIG Design System (Guide)
 - Android: Material Design System (Guide)
 
@@ -77,17 +77,17 @@ e.g, iOS에서의 24pt 아이콘을 배율로 그린다면:
 <img width="499" height="164" alt="image" src="https://github.com/user-attachments/assets/48c1c8d0-85f3-43fc-83eb-b3892c63c25c" />
 > iOS는 뒤로가기 버튼이 default로 없으니까 화면 안 왼쪽 위의 뒤로가기 버튼이 중요함 -> 뒤로가기 버튼에 라벨을 달기 때문에 화살표 꼬리를 달지 않는 경우가 많음. 페이지 메인 이름은 그래서 중간에 두는 경우가 많음.
 
-## 안전 영역 (Safe Area)
+### 안전 영역 (Safe Area)
 : 상태바/다이내믹 아일랜드/홈 인디케이터에 가려지지 않는 영역. 버튼과 중요한 내용은 이 안에 둠.
 > 배경 색깔 등은 Safe Area 밖으로 가도 됨
 
-### 시스템 영역
+#### 시스템 영역
 : 앱이 그리지 않는데 화면을 차지하는 영역. 디자인할 때 함께 그려 두고 확인함.
 - 상태바: 시간/배터리/알림
 - 키보드: 입력하면 화면 절반을 가림
 - 제스처 영역: 홈 인디케이터/뒤로가기 스와이프
 
-## 웹 (에서만 있는 요소 상태 (state))
+### 웹 (에서만 있는 요소 상태 (state))
 : 마우스와 키보드로 쓰는 웹에는 모바일에 없는 상태가 있음. 버튼 하나에 상태 5가지를 그려 둚.
 - 호버(Hover)
 - 포커스(Focus)
