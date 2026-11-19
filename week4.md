@@ -1,4 +1,100 @@
-# Week 4
+<img width="674" height="279" alt="Screenshot 2026-11-19 at 11 35 31" src="https://github.com/user-attachments/assets/440c204f-043c-4856-9a7c-aae8a7d3cc03" /># Week 4
+
+# 11/19/2026
+
+## 1. HTML 구조와 시맨틱 태그
+## 웹 화면의 재료
+### 웹의 3대 언어
+- HTML: 구조 (뼈대)
+  - 웹 페이지의 뼈대와 구조, 제목, 문단, 이미지, 링크 등 기본 내용 정의.
+- CSS: 디자인 (스타일)
+  - 웹 페이지의 디자인, 스타일, 색상, 글꼴, 레이아웃, 여백 (시각적 꾸미기)
+- JS: 기능 (동작하는 것)
+  - 웹 페이지의 동적인 기능, 상호작용 (사용자의 행동에 반응하는 이벤트 처리, 애니메이션, 데이터 처리 등)<img 
+
+### 디자인과 코드
+피그마랑 웹 개발 사이 연결 포인트
+width="673" height="204" alt="Screenshot 2026-11-19 at 10 20 00" src="https://github.com/user-attachments/assets/8ef8988c-5213-4c38-8132-a87b16812df1" />
+
+## HTML의 기본
+
+### 태그 (HTML Tag)
+<img width="673" height="204" alt="image" src="https://github.com/user-attachments/assets/e2d24b9a-c75a-48f2-82be-25659b50a83c" />
+
+### 자주 쓰는 태그
+<img width="673" height="289" alt="image" src="https://github.com/user-attachments/assets/630604e5-6992-4022-9d43-bc6c5de67d34" />
+
+## 시맨틱 태그
+: 생김새가 아닌, 의미를 나타내는 태그 (보여지는 화면은 똑같아도 보조 기술이 읽는 내용이 달라짐)
+### `<div>`만 쓴 화면 (Semantic HTML)
+: 어떤 부분이 어떤 이름으로 묶이는지 알기 어려움. 접근성 부분이 저해될 수 있음.
+<img width="673" height="236" alt="Screenshot 2026-11-19 at 10 38 32" src="https://github.com/user-attachments/assets/8d5bb64d-3624-4a6a-b521-9ca0a1452500" />
+예시:
+<img width="673" height="324" alt="image" src="https://github.com/user-attachments/assets/384d3830-01d7-4e14-a6dc-7861ac605dae" />
+
+> **TIP:** Figma 레이어도 영역 이름으로 묶어둬야 같은 구조 그대로 HTML로 반영하기 좋음.
+
+## 2. CSS 박스 모델 & Flexbox
+
+## CSS 기본
+CSS: 어떤 요소를 무엇을 어떻게 바꿀지 적는 규칙
+### 규칙 구조
+<img width="489" height="151" alt="Screenshot 2026-11-19 at 11 20 55" src="https://github.com/user-attachments/assets/b0cc858a-40bb-4ee5-9c50-1b0c3749175a" />
+- 앞에 . 찍는게 Class (`.class-name`): class-name에 해당하는 모든 요소를 그룹핑해 한번에 속성 바꾸기
+- 앞에 # 쓰는건 Id (`#id-name`): 단일 id-name 요소만 속성 바꾸기
+
+### 속성 대응
+<img width="489" height="211" alt="image" src="https://github.com/user-attachments/assets/824ba656-2d6d-4f54-9876-01f39eb59d52" />
+
+## 박스 모델
+### 4겹의 상자
+내용 -> 안쪽 여백 -> 테두리 -> 바깥 여백 순서
+<img width="489" height="190" alt="image" src="https://github.com/user-attachments/assets/e0fb0300-5e2a-4856-b2d2-518ec87b4ff3" />
+> **TIP:** 버튼 크기는 1)글자, 2)패딩, 3)테두리 로 결정
+> **TIP:** Padding 값등의 박스 모델 dimension은 시계방향으로 적기 (위, 오, 아래, 왼 순으로)
+
+### Figma와 비교
+<img width="670" height="201" alt="Screenshot 2026-11-19 at 11 33 05" src="https://github.com/user-attachments/assets/fb68cd17-c2d5-49a5-8340-515b7f187d24" />
+> **TIP:** 개발자들은 요소 간 Auto Layout에서 자동정렬(Horizontal/Vertical AL)의 거리는 Gap이라고 하지만 Frame-단위(첫번째 선택지) 거리는 margin을 사용해서 설정
+
+## Flexbox (Flex <=> Auto Layout)
+: 요소를 가로/세로로 나란히 놓고 간격/정렬을 정하는 CSS방식 (AL이랑 같은 개념이라 1:1로 대응됨)
+> AL을 쓰는 부분이라면 Class/id 속성 안에 `display: flex;` 로 시작함
+### Auto Layout 대응
+<img width="674" height="279" alt="image" src="https://github.com/user-attachments/assets/2afe90d6-f13e-4cdd-8329-23d0ab6b5cff" />
+
+## 3. JavaScript & 상태(State)
+: 사용자 행동을 감지 후 값을 바꾸고, 바뀐 값에 맞게 화면을 다시 그림.
+
+## 이벤트와 상태
+### 이벤트 (Event/동작 흐름):
+1. 사용자 행동 (e.g., 찜 버튼 탭)
+2. 이벤트 감지 (e.g., click)
+3. 상태 변경 (e.g., liked: false -> true)
+4. 화면 변경 (e.g., 하트 채움 / 찜 수 +1)
+
+### 상태 (State)
+: 지금 화면이 어떤 모습인지 정하는 값. 값이 바뀌면 화면도 바뀜
+예: `liked = false` // `liked = true`
+ **TIP:** Code에서의 State는 Figma에서의 Variant 같은 것
+
+## 화면 상태
+: 데이터를 불러오는 화면은 최소 **4가지** 모습을 가짐
+- 로딩 (Loading)
+- 빈 화면 (Empty State): 서비스의 목적을 위한 주 사용자 행동을 유도함
+- 오류 (Error): 휴리스틱9에 따라 오류의 원인과 해결책 제공
+- 정상 (Default)
+<img width="586" height="282" alt="image" src="https://github.com/user-attachments/assets/40e9ca0b-8380-4819-bcc3-7652c3e1f38d" />
+
+## 버튼 상태 (Button State)
+<img width="594" height="211" alt="image" src="https://github.com/user-attachments/assets/bb9a749a-3af1-4c80-8704-7a0fad02039c" />
+
+## 구현 제약
+실제 데이터: 길고, 비어 있고, 느릴 수 있음.
+- 긴 글자 (예: 클래스 이름이 40자라면?)
+- 빈 데이터 (예: 후기가 0개라면?)
+- 느린 응답 (예: 3초 넘게 걸린다면? -> 스켈레톤 활용하기, 효율적인 로딩을 위해 겹치는 요소 제외하기)
+- 다른 화면 (예: 태블릿에서 연다면?)
 
 # 11/18/2026
 
