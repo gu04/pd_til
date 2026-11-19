@@ -1,4 +1,4 @@
-<img width="674" height="279" alt="Screenshot 2026-11-19 at 11 35 31" src="https://github.com/user-attachments/assets/440c204f-043c-4856-9a7c-aae8a7d3cc03" /># Week 4
+# Week 4
 
 # 11/19/2026
 
@@ -14,7 +14,7 @@
 
 ### 디자인과 코드
 피그마랑 웹 개발 사이 연결 포인트
-width="673" height="204" alt="Screenshot 2026-11-19 at 10 20 00" src="https://github.com/user-attachments/assets/8ef8988c-5213-4c38-8132-a87b16812df1" />
+<img width="673" height="204" alt="Screenshot 2026-11-19 at 10 20 00" src="https://github.com/user-attachments/assets/8ef8988c-5213-4c38-8132-a87b16812df1" />
 
 ## HTML의 기본
 
