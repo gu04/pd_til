@@ -1,4 +1,140 @@
 # Week 4
+<img width="722" height="330" alt="image" src="https://github.com/user-attachments/assets/c21c4eec-739d-4d32-962e-ea7c45d81136" />
+
+# 11/20/2026
+
+## 1. 컴포넌트 기반 개발
+## 컴포넌트란?
+### HTML/CSS/JS
+<img width="493" height="230" alt="Screenshot 2026-11-20 at 10 14 17" src="https://github.com/user-attachments/assets/a35f0e67-e295-4ee5-b95f-79b2228957ca" />
+
+### 부품으로 조립 (Component)
+**Component**: 화면을 이루는 **재사용 가능한 부품**. 요즘 웹/앱은 화면을 컴포넌트 단위로 만들어 조립함.
+- Component 없이는 .html 화면/페이지마다 재사용되는 같은 요소도 각 화면/페이지별로 속성을 설정해야 함.
+- Component는 각 재사용되는 요소별로 속성을 정의하는 부분 1개만 추가하면 됨.
+
+## React
+: 개발자들은 React를 써서 Component를 만듦. (웹 화면(UI)을 컴포넌트로 만드는 JS library) (메타가 만들었음)
+- 컴포넌트(Component): 다시 쓰는 화면 조각
+- 상태(State): 바뀔 수 있는 값 (사용자 행동에 맞춰 바뀌는 것)
+- 렌더링(Rendering): 상태를 보고 화면을 그림 (값 -> 화면에 노출하는 것)
+
+### 화면을 고치는 방식
+: 예전에는 데이터가 바뀌면 화면을 직접 찾아 고쳤다면, React는 상태만 바꾸면 화면을 알아서 고침 (Main Component처럼)
+
+### 컴포넌트 코드 (JSX)
+: JS 안에 HTML처럼 쓰는 React 문법. 상태(JS)와 화면 모양(HTML)이 한 컴포넌트에 같이 있음.
+> 각 컴포넌트 별로 속성/상태/렌더링 등을 정의하는 파일 (.jsx) -> 해당 .jsx 파일에 있는 요소들 속성 및 특징만 바꾸면 모든 화면/페이지 속성이 바뀔 수 있도록.
+
+### Figma와 코드
+: Figma 컴포넌트 속성과 코드 컴포넌트의 입력값은 거의 같은 모양.
+<img width="493" height="126" alt="Screenshot 2026-11-20 at 10 29 07" src="https://github.com/user-attachments/assets/5ff7506d-63cc-4fd0-aad5-b4da7d885bee" />
+
+## Props와 States
+### Props
+: 컴포넌트를 쓰는 쪽에서 넣어주는 값. 같은 Button에 다른 Props를 넣으면 다른 버튼이 됨.
+<img width="502" height="156" alt="Screenshot 2026-11-20 at 10 35 02" src="https://github.com/user-attachments/assets/a1ebf825-017a-49b7-b0f5-e5214cbbfb77" />
+
+### State
+: 컴포넌트 안에서 사용자 행동에 따라 바뀌는 값.
+#### Props vs. State
+<img width="511" height="158" alt="image" src="https://github.com/user-attachments/assets/8a349bae-aec1-4fec-84ce-13455e719099" />
+> **TIP:** Props는 밖에서 넣는 값, State는 안에서 바뀌는 값
+
+## 컴포넌트 나누기
+### 화면 쪼개기
+: 반복되는 것부터 나눔. 여러 화면에서 다시 쓰이면 컴포넌트 후보.
+<img width="571" height="203" alt="Screenshot 2026-11-20 at 10 37 39" src="https://github.com/user-attachments/assets/56c31a36-5282-4302-998b-157c4c592792" />
+- 반복되는 요소를 .jsx로 만들어서 해당 파일을 반복해 넣고자 하는 화면의 .html파일 내로 import (`./jsx-file-name`)
+
+### 이름 맞추기
+: Figma와 코드의 컴포넌트/속성 이름이 같으면 질문이 줄어듦. (레이어, 컴포넌트, Variant 명칭 등)
+<img width="571" height="167" alt="Screenshot 2026-11-20 at 10 39 43" src="https://github.com/user-attachments/assets/731f92f8-3fd4-4781-be53-befdbaa9dc94" />
+
+## 2. Figma Dev Mode
+## Dev Mode
+### Design 모드 vs. Dev 모드
+: 개발자가 디자인을 읽고 구현에 필요한 정보를 참고하는 Figma 화면 (Shift D 누르면 됨)
+<img width="505" height="79" alt="Screenshot 2026-11-20 at 11 27 34" src="https://github.com/user-attachments/assets/fea84c78-1672-4ef8-8e61-a587a202623c" />
+
+#### 디자인 모드와 비교
+<img width="505" height="154" alt="Screenshot 2026-11-20 at 11 22 01" src="https://github.com/user-attachments/assets/79a1dac0-247b-4ae3-9cfc-80fb08d2776f" />
+
+## 스펙 읽기
+### Inspect 패널
+: 크기, 간격, Auto Layout, 글자, 색, 변수, 컴포넌트 속성 등
+- 레이어를 선택하면 오른쪽에 그 요소의 정보가 모두 보임
+
+### 읽는 순서
+: 개발자는 바깥 -> 안족, 배치 -> 모양 순서로 읽음.
+<img width="505" height="181" alt="Screenshot 2026-11-20 at 11 29 07" src="https://github.com/user-attachments/assets/a01ec1b4-6261-4487-ba0c-5e9938b9a815" />
+
+### 코드와 변수
+: Code탭에서는 선택한 레이어의 CSS/iOS/Android 코드 조각을 자동으로 보여 줌으로서 그대로 쓰는 코드가 아니라 참고용으로만 쓰임.
+<img width="501" height="132" alt="Screenshot 2026-11-20 at 11 31 38" src="https://github.com/user-attachments/assets/5c0575ac-e9be-47e4-a7b7-140134918778" />
+
+### 에셋 내보내기
+: 아이콘/이미지는 Inspect의 Assets에서 받음. 형식은 쓰임에 맞게
+<img width="501" height="155" alt="Screenshot 2026-11-20 at 11 33 39" src="https://github.com/user-attachments/assets/a7463211-c6c7-4af4-91c2-c5ea3593398b" />
+> **TIP:** 로고 같은 이미지의 경우, Position(상하좌우)을 Scale로 바꾸고 **Outline Stroke** 선택하기 (그래야 비율에 맞게 같이 커질 수 있음)
+
+## 개발 준비 표시
+### Ready for dev
+: "이 디자인/프레임은 개발해도 돼요"의 표시. 개발자는 Dev Mode에서 표시된 것만 모아 봄. (각 프레임 우측 상단에 `</>` 표기를 누르면 됨 -> Dev Mode에서 Ready for development 패널(왼쪽)에 뜸)
+<img width="708" height="274" alt="Screenshot 2026-11-20 at 11 34 20" src="https://github.com/user-attachments/assets/560cf993-eb00-45c5-8411-1c2f1a07cfcb" />
+> **TIP:** 시안 여러 개 중 개발할 것만 Ready for dev로 표시하기!
+
+### 주석과 측정 (Annotation)
+: 화면에 안 보이는 규칙은 주석, 꼭 지켜야 할 간격은 측정으로 디자인 위에 직접 남김.
+<img width="688" height="208" alt="image" src="https://github.com/user-attachments/assets/ebcd7eca-3625-4adb-bd76-bfbd52e07ff6" />
+
+예시 1:
+<img width="529" height="549" alt="image" src="https://github.com/user-attachments/assets/d2478b80-96d3-481b-b805-d9b6ff8aae7d" />
+
+예시 2:
+<img width="489" height="851" alt="image" src="https://github.com/user-attachments/assets/56b23544-9f35-4288-9699-ba78d1fa36f0" />
+
+### 변경 확인
+: Ready for dev 이후 고친 내용은 Dev Mode에서 이전 버전과 비교할 수 있음.
+<img width="688" height="95" alt="Screenshot 2026-11-20 at 11 37 04" src="https://github.com/user-attachments/assets/c5ecc188-be54-4e62-a187-e0158cc540ec" />
+
+## 3. 디자인 핸드오프와 협업 트렌드
+### Handoff 과정
+핸드오프: 디자인을 개발로 넘기는 것. 실무에서는 기획부터 QA까지 여러 번 나눠서 함께 함. (처음부터 끝까지 함께 하는 과정)
+<img width="663" height="90" alt="Screenshot 2026-11-20 at 13 34 34" src="https://github.com/user-attachments/assets/228923fb-3892-4dd3-9d4f-8edb34b9818c" />
+> **TIP:** 개발자한테서 자주 받는 질문은 미리 파일에 넣어두면 효율적으로 파일 주석/피드백을 주고 받을 수 있음
+예시:
+- 글자가 길면: 최대 길이/말줄임 규칙
+- 로딩 중에는: 상태별 화면
+- 다른 기기(e.g., 태블릿)에서는: 브레이크포인트별 화면
+- 색이 변수가 있는지: 토큰/스타일
+- 누르면 어디로 가는지: 화면 흐름/프로토타입
+- 아이콘은 어디서 받는지: Export 설정 (Asset(아이콘, 이미지 등의 그래픽 요소)를 모아두는 프레임을 만들거나, 화면에서 직접 원하는 요소만 클릭해서 Export 가능하게끔)
+
+## 핸드오프 패키지
+### 체크리스트
+: 개발자가 추가 질문 없이 볼 수 있게 8가지를 챙김.
+<img width="577" height="221" alt="Screenshot 2026-11-20 at 14 10 12" src="https://github.com/user-attachments/assets/03138c4a-59f0-4e90-acc4-b709f5a9f850" />
+
+### 파일 구조
+: 화면의 흐름 순서대로 섹션을 나누고, 상태/예외는 따로 모아 둠. (개발자가 처음 열어도 어디부터 볼지 알 수 있게끔 정리)
+<img width="561" height="285" alt="image" src="https://github.com/user-attachments/assets/063429c8-1ece-491f-885a-aa3d805fcbcd" />
+
+### 디자인 QA
+: 개발된 화면이 디자인대로 만들어졌는지 확인하는 단계
+<img width="561" height="184" alt="Screenshot 2026-11-20 at 14 23 57" src="https://github.com/user-attachments/assets/0de858fb-32b5-49e5-9f12-f92b1b001dad" />
+
+> **TIP:** QA 리스트 등은 PM이 제공함
+> **TIP:** 개발자와 소통할 때는 디자인 요소들의 정확한 수치를 사용해서 설명하는 편이 훨씬 나음
+
+## 협업 트렌드
+### 디자인과 코드 잇기
+: 디자인과 코드를 도구가 직접 잇는 방식 (아래 3가지 방법 등으로)
+<img width="565" height="134" alt="Screenshot 2026-11-20 at 14 26 03" src="https://github.com/user-attachments/assets/edfb3aea-8469-44b1-a993-8ebdac72e5f9" />
+
+### 디자이너의 역할
+: AI도 사람도 파일의 구조를 읽음. 정리된 파일(레이어 이름이 직관적이게, 위치는 AL, 색값보다 변수를 사용)일수록 의도대로 만들어짐.
+<img width="565" height="171" alt="image" src="https://github.com/user-attachments/assets/51d05654-975b-4226-86e6-a872f243a9a4" />
 
 # 11/19/2026
 
