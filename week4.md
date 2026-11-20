@@ -33,13 +33,25 @@
 ## Props와 States
 ### Props
 : 컴포넌트를 쓰는 쪽에서 넣어주는 값. 같은 Button에 다른 Props를 넣으면 다른 버튼이 됨.
+
 <img width="502" height="156" alt="Screenshot 2026-11-20 at 10 35 02" src="https://github.com/user-attachments/assets/a1ebf825-017a-49b7-b0f5-e5214cbbfb77" />
 
 ### State
 : 컴포넌트 안에서 사용자 행동에 따라 바뀌는 값.
 #### Props vs. State
 <img width="511" height="158" alt="image" src="https://github.com/user-attachments/assets/8a349bae-aec1-4fec-84ce-13455e719099" />
-> **TIP:** Props는 밖에서 넣는 값, State는 안에서 바뀌는 값
+
+> **TIP:** Props는 밖에서 넣는 값 (자식 입장에서 부모한테서 물려받는 값), State는 안에서 바뀌는 값 (자식이라면 자식이 정의한 값 중 사용자가 상호작용 할 수 있는 값)
+> **TIP:** 부모의 State를 자식에게 전달하면 자식 입장에서는 Props가 되며, 부모 State가 변경되면 자식에게 전달되는 Props도 업데이트됨
+> **주의:** 자식은 Props를 직접 수정할 수 없지만, _함수 형태의 Props_ 를 실행하여 _부모의 State 변경을 요청할 수 있음_
+
+- React에서는 각 index.html -> main.jsx > App.jsx > Component명.jsx들로 나뉘는데 보통 App.jsx에서 사용자의 상호작용/API call 등에 따른 상태(state) 자체를 바꾸고 Component.jsx에서는 props로서 값이 알아서 바뀜.
+- `Component명.jsx`: 재사용 가능한 컴포넌트 UI 정의
+- `App.jsx`: Component.jsx들의 컴포넌트 UI를 한번에 통합, 조합, 필요한 상태(state)관리
+- `main.jsx`: React 앱 시작 & 렌더링 (React와 Web의 사이 연결/entry 포인트)
+- `index.html`: React가 들어갈 html 뼈대 제공
+
+> **TIP:** State 관리 원칙: 사용자 상호작용에 따른 State는 반드시 App.jsx에서 관리하는 것이 아니라, 해당 State를 사용하는 컴포넌트들의 **공통 부모** 또는 **개별 컴포넌트**에서 관리함.
 
 ## 컴포넌트 나누기
 ### 화면 쪼개기
@@ -89,9 +101,11 @@
 <img width="688" height="208" alt="image" src="https://github.com/user-attachments/assets/ebcd7eca-3625-4adb-bd76-bfbd52e07ff6" />
 
 예시 1:
+
 <img width="529" height="549" alt="image" src="https://github.com/user-attachments/assets/d2478b80-96d3-481b-b805-d9b6ff8aae7d" />
 
 예시 2:
+
 <img width="489" height="851" alt="image" src="https://github.com/user-attachments/assets/56b23544-9f35-4288-9699-ba78d1fa36f0" />
 
 ### 변경 확인
