@@ -42,7 +42,9 @@
 <img width="511" height="158" alt="image" src="https://github.com/user-attachments/assets/8a349bae-aec1-4fec-84ce-13455e719099" />
 
 > **TIP:** Props는 밖에서 넣는 값 (자식 입장에서 부모한테서 물려받는 값), State는 안에서 바뀌는 값 (자식이라면 자식이 정의한 값 중 사용자가 상호작용 할 수 있는 값)
+
 > **TIP:** 부모의 State를 자식에게 전달하면 자식 입장에서는 Props가 되며, 부모 State가 변경되면 자식에게 전달되는 Props도 업데이트됨
+
 > **주의:** 자식은 Props를 직접 수정할 수 없지만, _함수 형태의 Props_ 를 실행하여 _부모의 State 변경을 요청할 수 있음_
 
 - React에서는 각 index.html -> main.jsx > App.jsx > Component명.jsx들로 나뉘는데 보통 App.jsx에서 사용자의 상호작용/API call 등에 따른 상태(state) 자체를 바꾸고 Component.jsx에서는 props로서 값이 알아서 바뀜.
