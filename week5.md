@@ -1,5 +1,195 @@
 # Week 5
 
+# 11/24/2026
+
+## 1. 디자인 맥락 프롬프트
+
+## 맥락 없는 요청
+> AI는 우리의 서비스, 사용자, 그 화면에서 무슨 일이 있었는지 모름
+
+### 6가지 구성요소
+1. **역할** (AI가 맡을 입장)
+2. **맥락** (서비스/사용자/상황 정보)
+3. **과업** (AI가 정확히 해야 할 일)
+4. **형식** (결과물의 모양)
+5. **제약** (지켜야 할 조건)
+6. **예시** (원하는 결과의 샘플)
+
+## 백락 블록
+### 맥락 블록 3가지
+: AI는 우리 서비스를 모르기 때문에, 디자이너가 아는 맥락을 3칸으로 나눠 넣음
+1. 서비스
+   : 무슨 서비스, 어떤 말투
+2. 사용자
+   : 누가, 어떤 상황에서
+3. 화면 상황
+   : 어느 화면, 직전에 무슨 일을 하는지
+
+### 맥락 블록 예시 (클로드 .xml 포맷)
+```
+<context>
+  <service> 모임핏: 동네 운동 클래스 예약 앱. 친근하지만 가볍지 않은 해요체. </service>
+  <user> 퇴근길에 짧게 앱을 여는 20~30대 직장인. 빨리 예약을 끝내고 싶어 함. </user>
+  <screen> 결제 버튼을 누른 직후, 카드 한도 초과로 결제 실패. 자리는 10분 동안 유지됨. </screen>
+</context>
+```
+
+## 제약과 레퍼런스
+### 제약 조건
+: 디자인 결과물은 화면에 들어가야 함. 길이/말투/내용을 숫자와 규칙으로 정하기
+<img width="605" height="185" alt="Screenshot 2026-11-24 at 10 18 22" src="https://github.com/user-attachments/assets/b26bee67-f4f3-4ded-a21b-bfef396b5e84" />
+
+### 레퍼런스 설명하기
+: 특정 레퍼런스(앱, 이미지 등) 대신, 그 레퍼런스의 좋은 점을 **특징**으로 바꿔넣기
+<img width="599" height="185" alt="image" src="https://github.com/user-attachments/assets/c3affdb1-9efd-47bb-b4ff-c0cc8f82a348" />
+
+### 출력 형식
+: 결과를 표로 출력받으면 비교하기 쉽고, 화면에 바로 넣을 수 있도록 **출력 포맷**까지 specify.
+<img width="599" height="116" alt="image" src="https://github.com/user-attachments/assets/f70e36e3-c3c3-4c6c-b3a0-b362213ae346" />
+
+> **TIP:** 맥락은 '블록' || 조건은 '숫자' || 형식은 '표' || 레퍼런스는 '특징'
+
+## 화면 구성안
+### 구성안 흐름
+: 문구 대신 화면의 뼈대(영역/요소/상태)를 받는 프롬프트. 표로 받아야 Figma로 옮기기 쉬움.
+1. 맥락 블록
+2. 구성안 표
+3. Figma로 옮기기
+4. 화면 기준 검토
+
+### 구성안 프롬프트 구조
+```
+<persona> 너는 10년차 UXUI 디자이너야. </persona>
+<context> (맥락 블록 그대로 넣기) </context>
+<task> 결제 실패 화면의 구성안을 써 줘. 위에서 아래 순서로. </task>
+<constraints>
+- 모바일 375px, 한 화면 안에 끝나게
+- 주 버튼은 1개, 보조 버튼은 1개까지
+- 상태: 기본 · 로딩 · 다시 실패
+</constraints>
+<format> 표: 순서 | 영역 | 들어갈 요소 | 상태·조건 </format>
+```
+
+- `<persona> / <role>` : AI의 역할
+- `<context>`: 서비스, 상황, 맥락
+- `<task>`: AI의 업무 (무엇을 해야하는지 전체적인 과업)
+- `<constraints>`: 제약
+- `<format>`: 출력 구조
+
+> **TIP:** Plan모드로 계획을 세워 기획안/구성안을 세운 후 Auto모드로 화면 만들기
+
+### 구성안 결과
+: 받은 표의 번호를 화면에 그대로 옮기면 와이어프레임이 됨.
+<img width="599" height="197" alt="Screenshot 2026-11-24 at 10 29 00" src="https://github.com/user-attachments/assets/b266fa25-7d81-467c-9c8a-959e8340ab91" />
+
+**와이어프레임**: 앱/웹 화면에 콘텐츠와 버튼 등을 어디에 배치할지 **선과 박스**로 간단히 그린 **설계도**
+<img width="648" height="219" alt="image" src="https://github.com/user-attachments/assets/c5c8af48-7a20-4b8e-8b81-b26b5cd79e1f" />
+
+### 화면 챕처로 비평 받기 (Multimodal Prompt)
+: 캡처를 함께 넣으면 AI가 화면을 읽고 비평함. 화면에 없는 것을 지어내는지 꼭 확인 필요.
+<img width="583" height="163" alt="Screenshot 2026-11-24 at 10 30 58" src="https://github.com/user-attachments/assets/a3d9fa8f-2a2c-4c4e-abeb-c0fc599e0a7d" />
+
+> **주의:** 문구만 받지 말고 **화면의 뼈대**도 같이 받기. 받은 뒤엔 꼭 화면 기준으로 검토하기.
+
+## 2. Few-shot으로 품질 고정하기
+
+## Few-shot
+> 예시/레퍼런스를 주는 게 설명 10줄씩 쓰는 것보다 나음.
+
+### Zero-shot vs. Few-shot
+- One-shot: 원하는 결과 예시 **1개**를 주는 방법
+- Few-shot: 원하는 결과 예시 **몇 개**를 주는 방법
+- Zero-shot: 예시 없이 **설명만** 주는 방 (예시 X)
+<img width="615" height="213" alt="Screenshot 2026-11-24 at 13 26 57" src="https://github.com/user-attachments/assets/822f9124-a9c5-48c3-9036-8f7dbad7bdd5" />
+
+> **주의:** 한 번 잘 나온 건 운일 수도 있음. **여러 번 돌려서** 고른지 확인해야 함.
+
+## 예시 고르기
+### 좋은 예시 기준
+1. 실제로 쓸 수준: 그대로 화면에 넣어도 되는 문구
+2. 서로 다른 상황: 원인/상황이 다른 2~3개
+3. 같은 형식: 제목/본문/버튼 구조를 통일
+
+### 피할 예시
+: 좋은 예시와 함께 피할 예시까지의 이유를 쓰면 경계가 분명해짐
+
+## 예시 베끼기
+: 예시가 하나 뿐라면/너무 비슷해지면, AI가 구조가 아닌 문장까지 따라할 수 있음.
+
+### 반복 실행으로 확인
+1. 5번 실행 (새 대화에서 같은 프롬포트를 사용하기)
+2. 기준 3개로 체크 (길이/말투/구조)
+3. 벗어난 이유 찾기 (예시? 조건? 맥락?)
+4. 다음 버전으로 (바꾼 이유와 함께 기록하기)
+
+# 3. 프롬프트 버전관리
+## 왜 기록할까
+: 잘 된 프롬프트도 기록이 없으면 다시 만들 수 없음.
+
+### 기록이 없을 때
+: 잘 나온 프롬프트도 기록이 없으면 다시 만들 수 없음.
+1. 무엇을 바꿨는지 모름
+2. 팀원이 같은 시행착오를 반복
+3. 선택의 근거를 설명 못 함
+
+> 프롬프트도 여러 **버전**으로 남기기!!!
+
+## 버전 기록과 평가
+### 버전마다 남길 4가지
+: 바꾼 이유와 결과를 같이 남겨야 다음 사람이 이어서 고칠 수 있음.
+<img width="664" height="200" alt="image" src="https://github.com/user-attachments/assets/077ed9b4-7e5d-437d-81cc-78043c28ba30" />
+
+### 버전 기록 예시
+예시 (결제 실패 문구 프롬프트를 한 표로 정리하면)
+<img width="664" height="152" alt="image" src="https://github.com/user-attachments/assets/8a739ae1-5f92-4b58-a59c-8aa20f970c58" />
+
+### 느낌 vs. 평가
+: 모든 판단은 **근거가 있어야 함**
+<img width="664" height="202" alt="Screenshot 2026-11-24 at 13 55 39" src="https://github.com/user-attachments/assets/9b8ad025-ec85-4886-890f-f6a8246e1d73" />
+
+### 테스트 케이스 (Test Case)
+: 버전마다 똑같이 넣어 볼 입력 5개. 흔한 상황과 예외 상황(edge case)을 섞기.
+<img width="664" height="219" alt="Screenshot 2026-11-24 at 13 56 29" src="https://github.com/user-attachments/assets/0d36d7b0-d110-4578-9de7-727b1ac05cc1" />
+
+### 루브릭 (Rubric)
+: 점수 기준을 미리 적어 두면 누가 채점해도 비슷한 점수가 나옴.
+<img width="664" height="165" alt="Screenshot 2026-11-24 at 13 57 20" src="https://github.com/user-attachments/assets/398d0687-75a3-462d-b382-161f90590a41" />
+
+### 버전 점수표
+: 같은 케이스/같은 루브릭으로 매긴 점수(0~5점 정도). 어떤 상확에서 약한지도 함께 확인 가능.
+<img width="664" height="171" alt="image" src="https://github.com/user-attachments/assets/98f3d462-fb69-43bb-88f7-2bda0bd392a2" />
+
+### AI 채점, 사람 확인 (LLM-as-a-Judge)
+: 채점도 AI한테 맡길 수 있음. 대신 AI 점수는 후보이고, 사람이 확인한 점수만 기록함.
+1. 루브릭 + 결과 넣기 (다른 도구에 넣으면 더 좋음)
+2. AI가 점수를 부여 + 이유를 붙임 (케이스별로 표로 받기)
+3. 사람이 2개 확인 (가장 높은/낮은 것)
+4. 확정 점수 기록 (버전 기록표의 "결과를 비교")
+
+## 라이브러리
+### 템플릿 만들기 (Prompt Template)
+: 바뀌는 부분을 {빈칸}으로 빼면 다른 화면 문구에도 다시 쓸 수 있음.
+<img width="661" height="201" alt="Screenshot 2026-11-24 at 14 05 02" src="https://github.com/user-attachments/assets/6b7c7335-2066-426e-a12f-30c57c614f2f" />
+
+### 템플릿 예시
+: UX 카피 템플릿. 빈칸만 바꾸면 예약 완료/취소 화면 문구에도 쓸 수 있음.
+
+```
+<context>
+<service> {서비스 이름 · 한 줄 설명 · 말투} </service>
+<user> {누가 · 어떤 상황에서} </user>
+<screen> {어느 화면 · 직전에 일어난 일} </screen>
+</context>
+<task> {문구 종류}를 {개수}세트 써 줘. </task>
+<constraints> 제목 {n}자 · 본문 {n}자 · {말투} · 금지: {쓰지 않을 말} </constraints>
+<examples> 좋은 예 {2~3개} / 피할 예 {1개 + 이유} — 예시는 구조만 참고, 문장은 새로 </examples>
+<format> 표: 제목 | 본문 | 버튼 | 글자 수 </format>
+```
+
+### 팀 프롬프트 라이브러리
+: 팀이 함께 쓰는 프롬프트 목록. 노션 표 하나로 시작하기.
+<img width="661" height="162" alt="Screenshot 2026-11-24 at 14 07 29" src="https://github.com/user-attachments/assets/80e95107-e5b3-4915-8729-e5aad61f9a0f" />
+
 # 11/23/2026
 
 ## 1. AI 도구 선정 기준
