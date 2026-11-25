@@ -1,5 +1,69 @@
 # Week 5
 
+# 11/25/2026
+
+## 1. Figma/프롬프트 복습
+
+## Product Designer 직무
+### GUI -> PD
+(화면 표현 -> 사용 흐름 -> 문제와 결과)
+<img width="421" height="293" alt="image" src="https://github.com/user-attachments/assets/8e81783c-d4e2-49c7-b4bd-b3a30b3a3f1d" />
+
+## PD 채용공고
+: 공고 문장은 1) 문제정의, 2) 설계, 3) 검증, 4) 협업 으로 나눠 읽
+<img width="570" height="229" alt="Screenshot 2026-11-25 at 10 16 42" src="https://github.com/user-attachments/assets/5fc19e28-1502-4b20-8d94-c3f5f17309a6" />
+
+## AI 시대 PD의 역할
+AI라는 새 도구를 사용하지만 판단하는 일은 사람이 함.
+<img width="570" height="280" alt="Screenshot 2026-11-25 at 10 18 06" src="https://github.com/user-attachments/assets/3e1b2695-ab90-4bb5-be21-8d9a6bd160ee" />
+
+## AI Literacy
+### AI가 답을 만드는 방법
+: 다음에 올 말을 확률로 골라 이어 붙임. LLM은 Next-Token Prediction으로 다음 토큰을 확률로 전환해 최대한 그럴듯/자연스럽게 답을 생성
+> **주의:** Hallucination이 생길 수 있음 (AI는 맞히면 보상을 주기 때문에 보상을 받기 위해 찍어가며 맞힐 수 있음)
+
+### 프롬프트 구성요소
+1) 역할 (<persona>)
+2) 맥락 (<context>)
+3) 과업 (<task>)
+4) 형식 (<format>)
+5) 제약 (<constraints>)
+6) 예시 (<example>) - **Few-shot**
+
+### AI의 한계와 답변 검증 절차
+1. 쪼개기: 숫자/날짜/이름/인용이 들어간 문장을 하나씩 떼기
+2. 1차 출처 (Primary source): 내용을 처음 발표한 곳에서 직접 확인
+3. 판정, 확인일: 맞음/틀림/확인 불가로 적고, 확인한 날짜를 남기기
+
+### 책임 있는 AI 활용
+: 내보내기 전에 출처, 권리, 사용 사실을 확인
+1) 출처 확인
+2) 권리 확인
+3) 사용 사실 밝히기
+
+### 동료 테스트 (The Colleague Test)
+: 보내기 전, 상황을 모르는 동료가 읽어도 이해할 수 있는지 확인하는 방법 (Anthropic Prompt Guide에서)
+// 동료가 헷갈리면 AI도 헷갈릴 확률 높음
+
+### v0 -> v3 개선 (Version Control)
+: 한 번에 한 칸씩 더하면 무엇이 결과를 바꿨는지 보임.
+<img width="714" height="215" alt="image" src="https://github.com/user-attachments/assets/d19c2a60-3036-45b2-a3d8-6510a2da6f2b" />
+
+## Figma 마스터
+<img width="550" height="267" alt="Screenshot 2026-11-25 at 11 20 14" src="https://github.com/user-attachments/assets/d5f1aeca-18bb-4bdb-92c8-be0b20645e01" />
+
+### Variant & Property
+<img width="550" height="222" alt="image" src="https://github.com/user-attachments/assets/5eea604f-ae3a-4de0-9c01-2512f9239d1f" />
+
+- Variant: 모양 (e.g., 상태 State, 크기 Size, 종류 Type)
+- Property: 내용 (e.g., 글자 Text, 보이기 Boolean, 인스턴스 Instance Swap)
+
+> **TIP:** `spacer` 등을 rectangle로 만들어서 왼 요소가 숨겨져도 (Boolean False 되어도) 오 정렬인 요소는 위치 그대로로 둘 수 있음.
+
+### UI 컴포넌트
+#### 헷갈리는 짝 (생김새보다 "누르면 어떤 액션이 일어나는가"로 구분하기)
+<img width="706" height="222" alt="Screenshot 2026-11-25 at 14 21 25" src="https://github.com/user-attachments/assets/c45f6e39-1145-473b-b450-84806d317a97" />
+
 # 11/24/2026
 
 ## 1. 디자인 맥락 프롬프트
