@@ -10,7 +10,7 @@
 <img width="421" height="293" alt="image" src="https://github.com/user-attachments/assets/8e81783c-d4e2-49c7-b4bd-b3a30b3a3f1d" />
 
 ## PD 채용공고
-: 공고 문장은 1) 문제정의, 2) 설계, 3) 검증, 4) 협업 으로 나눠 읽
+: 공고 문장은 1) 문제정의, 2) 설계, 3) 검증, 4) 협업 으로 나눠 읽음
 <img width="570" height="229" alt="Screenshot 2026-11-25 at 10 16 42" src="https://github.com/user-attachments/assets/5fc19e28-1502-4b20-8d94-c3f5f17309a6" />
 
 ## AI 시대 PD의 역할
