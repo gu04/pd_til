@@ -1,5 +1,9 @@
 # Week 5
 
+# 11/27/2026
+## Lv1 회고
+<img width="1216" height="2340" alt="image" src="https://github.com/user-attachments/assets/de838a13-ff4c-42d8-aa72-b04fd76aebc1" />
+
 # 11/26/2026
 
 ##  1. UX/UI / 코드 / 마인드셋
