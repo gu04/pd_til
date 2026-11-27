@@ -1,5 +1,112 @@
 # Week 5
 
+# 11/26/2026
+
+##  1. UX/UI / 코드 / 마인드셋
+
+## UX/UI 법칙
+### 휴리스틱/UX 법칙
+(단순히 "불편해요"보다 객관적으로 어느 원칙이 깨졌는지 특정 **기준에 대한 진단**으로 바꾸기)
+
+### 색 / 타이포 / 정보 위계
+(**크기/대비/여백/위치**로 뭘 먼저 보게 할지 정하기)
+> **TIP:** 사용자가 우선순위로 삼아야 할 요소를 파악하고 위계를 설계할 수 있음
+
+### 그리드 / 디바이스
+(같은 화면도 크기마다 열과 규칙이 달라짐)
+<img width="600" height="270" alt="Screenshot 2026-11-26 at 10 13 03" src="https://github.com/user-attachments/assets/17c1e966-36ad-4f44-acdf-14352470c3cf" />
+> Break Point (기기마다 달라지는 레이아웃 기준), Margin (요소 밖을 둘러싸는 spacing), Grid (기준 선을 지켜 열과 규칙을 정확하게 설정)
+
+### 접근성 / 디자인 시스템
+(원칙 -> 파운데이션 -> 컴포넌트 -> 가이드 로 일관되게끔)
+<img width="600" height="232" alt="Screenshot 2026-11-26 at 10 14 52" src="https://github.com/user-attachments/assets/b0a22f01-27e1-4fec-b5b0-8d60a5003c8c" />
+
+### HTML/CSS/JavaScript
+- Figma의 AL <=> CSS의 Flexbox (flex-direction은 정렬 (row/column)
+- HTML은 뼈대, CSS는 스타일, JavaScript는 행동/상호작용
+
+### 컴포넌트 개발 / 핸드오프
+(Figma 속성(Variant/Text/Boolean)이 코드의 Props가 됨)
+<img width="574" height="148" alt="Screenshot 2026-11-26 at 10 23 06" src="https://github.com/user-attachments/assets/b94fe34a-aa1f-4100-a3fa-3dd3bc5f1955" />
+
+### 헷갈리는 원칙 짝 정리표
+<img width="703" height="244" alt="image" src="https://github.com/user-attachments/assets/6c51e8c4-0558-4e23-85f9-ce70d6d50679" />
+
+> **TIP:** 일관성과 표준성의 휴리스틱에 어긋나면 Learning Curve가 높아짐 (사용자가 새로 받아들이고 배워야 할 인터페이스 패턴이 많음)
+
+### 문제 진단 문장 3요소
+<img width="703" height="151" alt="Screenshot 2026-11-26 at 10 28 09" src="https://github.com/user-attachments/assets/09210e77-3331-47f4-93a8-c8eac86d58a9" />
+
+## HTML
+### HTML 핵심 요소, 태그
+- `<!DOCTYPE html>`
+- `<html lang="ko"></html>`: 언어를 한국어로 설정함. 브라우저 내에서 설정된 언어로 쓰이면 해당 언어를 쓰는 사용자들의 검색 결과 등에 더 잘 뜰 수 있음
+- `<head></head>`: 브라우저에서 프로세싱 되는 메인 정보
+- `<meta>`
+- `<title></title>`: 탭의 이름/제목
+- `<body></body>`: 브라우저 내 본문 내용
+
+> **TIP:** `index.html` 파일에서 느낌표(!) 치고 Tab(->|)을 누르면 자동으로 placeholder 뼈대 만들어줌
+
+### 자주 쓰는 태그
+<img width="706" height="272" alt="image" src="https://github.com/user-attachments/assets/95738424-8a14-4f4d-9f17-84b4da8a982f" />
+
+#### Text Size (글자 크기)
+<img width="213" height="340" alt="Screenshot 2026-11-26 at 11 22 26" src="https://github.com/user-attachments/assets/60b262fa-1154-427c-baed-8302b1713c20" />
+
+### HTML 포맷
+<img width="659" height="127" alt="image" src="https://github.com/user-attachments/assets/0f320e16-1b80-4377-ad00-980a50d894d5" />
+
+## CSS
+### HTML에 CSS 연결
+- <link rel="stylesheet" href="style.css"> 로 묶기 (rel은 어떤 스타일 문서로 관계 정의할지, href는 repository내 어떤 파일/문서에 해당 스타일을 연결할건지 (디폴트는 style.css 파일))
+> **TIP:** CSS는 <head></head> 사이에 붙여넣기
+
+### CSS 포맷
+<img width="351" height="84" alt="image" src="https://github.com/user-attachments/assets/cc71ef2d-3578-418a-a6bf-872cba4e7a4f" />
+
+> **주의:** CSS는 각 스타일 끝에 semi-colon(;) 추가해야됨!!!
+
+### 선택자 3가지 종류 (tag, class, id)
+- Tag (HTML의 여러 태그 (종류) e.g., p{} // img{} // h3{})
+- Class (class="type" 안의 type에 해당하는 모든 요소들에 해당)
+- Id (id="element"안의 element에 해당하는 element 요소 하나에 해당)
+
+> **TIP:** 보통 **ID는 JS로 요소 하나를 찾을 때** 주로 쓰는데, 나머지 **실무 상황에서는 Class**를 사용.
+
+### Class vs. ID
+- `.class`
+  : 여러 요소의 스타일을 한 번에 바꿀 때 유용 (class 이름 placeholder에 같은 요소들의 공통된 이름으로 대체)
+- `#id`
+  : 단 하나의 요소의 스타일을 바꿀 때 사용 (id 이름 placeholder에 해당 요소 이름으로 대체)
+
+### Figma 속성 <=> CSS 속성
+<img width="645" height="216" alt="Screenshot 2026-11-26 at 13 31 42" src="https://github.com/user-attachments/assets/4048de3f-991a-4ce8-b160-d5ab2add8234" />
+
+### Box Model (박스 모델)
+: 모든 요소는 내용 -> 안쪽 여백 -> 테두리 -> 바깥 여백 순서 (안 -> 밖 순)
+<img width="645" height="145" alt="Screenshot 2026-11-26 at 13 33 02" src="https://github.com/user-attachments/assets/4d68f988-e1c2-4ca2-b38c-0130c45e9480" />
+
+### Flex = AL
+: `display: flex`라면 AL처럼 방향/간격/정렬을 따로 정할 수 있음
+<img width="645" height="238" alt="Screenshot 2026-11-26 at 13 33 45" src="https://github.com/user-attachments/assets/4bc1c9e8-52f0-4e52-b9f9-11219a280ded" />
+
+## JavaScript
+(Figma Prototype의 트랜지션과 같은 흐름)
+### JS가 하는 일 3단계
+1. 찾기: 화면에서 버튼/숫자를 찾음
+   - **`querySelector`** 함수로 찾음
+2. 기다리기: 버튼 클릭 등의 사용자&요소 간의 상호작용 기다림
+3. 바꾸기: 글자/모양/숫자 등을 바꾸기
+
+### HTML, CSS, JS 주석(Comment)
+HTML | CSS | JS
+----|----|----|
+`<!--comment-->` | `/* comment */` | `// comment`
+
+## AI 도구 / Junior Designer 마인드셋
+
+
 # 11/25/2026
 
 ## 1. Figma/프롬프트 복습
